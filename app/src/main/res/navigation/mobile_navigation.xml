@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/home_dest">
+    <fragment
+        android:id="@+id/home_dest"
+        android:name="com.example.basicnavigationbase.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/home_fragment">
+        
+        <argument
+            android:name="argumento"
+            app:argType="string" />
+        
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/flow_step_one_dest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_home_dest_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/flow_step_one_dest"
+        tools:layout="@layout/flow_step_one_fragment"
+        android:name="com.example.basicnavigationbase.FlowStepFragment">
+
+        <argument
+            android:name="flowStepNumber"
+            app:argType="integer"
+            android:defaultValue="1"/>
+
+        <action
+            android:id="@+id/next_action"
+            app:destination="@+id/flow_step_two_dest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/flow_step_two_dest"
+        tools:layout="@layout/flow_step_two_fragment"
+        android:name="com.example.basicnavigationbase.FlowStepFragment">
+
+        <argument
+            android:name="flowStepNumber"
+            app:argType="integer"
+            android:defaultValue="2"/>
+
+        <action
+            android:id="@+id/next_action"
+            app:popUpTo="@id/home_dest"
+            app:popUpToInclusive="true"
+            app:destination="@id/home_dest"/>
+    </fragment>
+
+    <!--TODO STEP 1 Create a new navigation destination pointing to SettingsFragment -->
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.basicnavigationbase.SettingsFragment"
+        android:label="settings_fragment"
+        tools:layout="@layout/settings_fragment">
+
+        <argument
+            android:name="argument"
+            app:argType="string" />
+        
+        </fragment>
+    <!--END STEP 1 -->
+
+</navigation>
