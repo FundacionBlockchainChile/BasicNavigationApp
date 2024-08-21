@@ -7,13 +7,11 @@
     android:fillViewport="true"
     tools:context=".HomeFragment">
 
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/homeFragmentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="24dp">
+        android:padding="16dp">
 
         <Button
             android:id="@+id/navigate_destination_button"
@@ -29,8 +27,8 @@
 
         <ImageView
             android:id="@+id/profileImage"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_marginTop="104dp"
             android:src="@drawable/profile_image"
             app:layout_constraintEnd_toEndOf="parent"

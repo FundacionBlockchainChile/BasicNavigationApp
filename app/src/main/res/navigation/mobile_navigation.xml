@@ -22,11 +22,7 @@
             app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_home_dest_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_out_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
@@ -40,8 +36,8 @@
             android:defaultValue="1"/>
 
         <action
-            android:id="@+id/next_action"
-            app:destination="@+id/flow_step_two_dest"
+            android:id="@+id/action_flowStepOneDest_to_flowStepTwoDest"
+            app:destination="@id/flow_step_two_dest"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -58,25 +54,14 @@
             app:argType="integer"
             android:defaultValue="2"/>
 
-        <action
-            android:id="@+id/next_action"
-            app:popUpTo="@id/home_dest"
-            app:popUpToInclusive="true"
-            app:destination="@id/home_dest"/>
     </fragment>
-
-    <!--TODO STEP 1 Create a new navigation destination pointing to SettingsFragment -->
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.basicnavigationbase.SettingsFragment"
         android:label="settings_fragment"
-        tools:layout="@layout/settings_fragment">
+        tools:layout="@layout/settings_fragment" />
 
-        <argument
-            android:name="argument"
-            app:argType="string" />
-        
-        </fragment>
+    <!--TODO STEP 1 Create a new navigation destination pointing to SettingsFragment -->
     <!--END STEP 1 -->
 
 </navigation>

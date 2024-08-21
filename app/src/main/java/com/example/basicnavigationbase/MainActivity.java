@@ -30,32 +30,24 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        NavHostFragment host = (NavHostFragment) getSupportFragmentManager()
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.my_nav_host_fragment);
+        assert navHostFragment != null;
+        NavController navController = navHostFragment.getNavController();
 
-        // Set up Action Bar
-        NavController navController = host.getNavController();
-
-        //TODO STEP 11  - Create an AppBarConfiguration with the correct top-level destinations
-        // appBarConfiguration =  new AppBarConfiguration.Builder(navController.getGraph()).build();
-        // You should also remove the old appBarConfiguration setup above
+        // Configuring the AppBarConfiguration with top-level destinations
         appBarConfiguration = new AppBarConfiguration.Builder(
-            R.id.home_dest, R.id.settingsFragment  // Specify the top-level destinations
+                R.id.home_dest  // Include all top-level destinations here
         ).build();
-        //END STEP 11
 
-        setupActionBar(navController, appBarConfiguration);
+        // Setting up the ActionBar with NavController
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        setupNavigationMenu(navController);
-
-        setupBottomNavMenu(navController);
-    }
-
-    private void setupBottomNavMenu(NavController navController) {
-        //TODO STEP 9 - Use NavigationUI to set up Bottom Nav
+        // Setting up BottomNavigationView with NavController
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav_view);
-        NavigationUI.setupWithNavController(bottomNav, navController);
-        //END STEP 9
+        if (bottomNav != null) {
+            NavigationUI.setupWithNavController(bottomNav, navController);
+        }
     }
 
     private void setupNavigationMenu(NavController navController) {
@@ -104,13 +96,14 @@ public class MainActivity extends AppCompatActivity {
                 || super.onOptionsItemSelected(item);
         //END STEP 8
     }
-    
-    //TODO STEP 12  - Have NavigationUI handle up behavior in the ActionBar
+
     @Override
     public boolean onSupportNavigateUp() {
-        return Navigation.findNavController(this, R.id.my_nav_host_fragment).navigateUp()
-                || super.onSupportNavigateUp();
+        // Handling Up navigation with the NavController
+        NavController navController = Navigation.findNavController(this, R.id.my_nav_host_fragment);
+        return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
     }
-    //END STEP 12
+    
+
 
 }

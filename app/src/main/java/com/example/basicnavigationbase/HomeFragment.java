@@ -51,16 +51,6 @@ public class HomeFragment extends Fragment {
         );
         //END STEP 3
 
-        //TODO STEP 4 - OnClickListener to navigate using an action
-        Button settingsButton = view.findViewById(R.id.navigate_action_button);
-        //END STEP 4
-
-        //TODO STEP 7 - Update the OnClickListener to navigate using an action and using  ...Direction clases for arguments
-        settingsButton.setOnClickListener(v ->
-                Navigation.findNavController(v).navigate(R.id.action_home_dest_to_settingsFragment, null, options)
-        );
-        //END STEP 7
-
     }
 
     @Override
